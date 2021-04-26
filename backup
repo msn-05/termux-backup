@@ -21,14 +21,13 @@ fi
 if [[ -f $file ]]
 then
 	printf $red"\nA backup already exists in \e[1m${file}\n"$off
-	echo -en $red"Overwrite it?([y]/n):"$off
-	read choice
-	if [[ choice == 'y' || choice == '' ]]
+	read -p "Overwrite it?([y]/n):" choice
+	if [[ $choice == 'y' || $choice == '' ]]
 	then
 		:
 	else
 		printf $red"\nAborting...\n"$off
-		sleep 2s
+		sleep 1s
 		exit
 	fi
 fi
@@ -46,4 +45,4 @@ cd /data/data/com.termux/files
 
 tar -zcf - home usr | pv -pte > "$file"
 
-printf $green"\nBackup done!\n"$off
+printf "\nDone!\n"
