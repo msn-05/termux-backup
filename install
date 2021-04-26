@@ -14,11 +14,11 @@ else
 	pkg install pv toilet
 fi
 sleep 2s
-printf $green"\nAdding backup and restore to bin...\n"$off
+printf $green"\nAdding backup and restore to PATH...\n"$off
 chmod +x backup
 chmod +x restore
 cp backup $bin/
 cp restore $bin/
 sleep 2s
 
-printf $green"\nNow you can run backup and restore by just typing them"$off
+printf $green"\nNow you can run backup and restore by just typing them\n"$off
