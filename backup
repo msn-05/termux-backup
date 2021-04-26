@@ -20,8 +20,9 @@ else
 fi
 if [[ -f $file ]]
 then
-	printf $red"\nA backup already exists in ${green}${file}\n"$off
-	read -p $red"\nOverwrite it?([y]/n):"$off choice
+	printf $red"\nA backup already exists in \e[1m${file}\n"$off
+	echo -en $red"Overwrite it?([y]/n):"$off
+	read choice
 	if [[ choice == 'y' || choice == '' ]]
 	then
 		:
