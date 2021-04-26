@@ -6,23 +6,6 @@ green='\e[32m'
 red='\e[31m'
 off='\e[0m'
 
-function term(){
-	echo -e $red"Reverting back made changes..."$off
-	cd /data/data/com.termux/files/
-	if [[ -d home_backup ]]
-	then
-		rm -rf home
-		rm -rf usr
-		mv home_backup home
-		mv usr_backup usr
-		echo "Changes reverted."
-		exit
-	fi
-	exit
-}
-
-trap term SIGINT
-
 clear
 
 toilet -f slant -F metal -t "T-Restore"
@@ -54,11 +37,8 @@ else
 	exit
 fi
 
-printf $green"\nRestoring your data from \e[1m${file}\n${green}Note: After termux is restored restart the app.\n"$off
+printf $green"\nRestoring your data from \e[1m${file}\n${green}Note: After termux is restored restart the app.\n${red}Warning: Do not I repeat do not exit while restoring."$off
 
 cd /data/data/com.termux/files
 
-mv home home_backup
-mv usr usr_backup
-
-pv "$file" | tar -zxf - --preserve-permissions
+pv "$file" | tar -zxf - --recursive-unlink --preserve-permissions
