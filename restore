@@ -1,0 +1,46 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+file=/sdcard/termux-backup/termux-backup.tar.gz
+
+green='\e[32m'
+red='\e[31m'
+off='\e[0m'
+
+clear
+
+toilet -f slant -F metal -t "T-Restore"
+
+sleep 2s
+
+if [[ -d /sdcard/ ]]
+then
+	:
+else
+	termux-setup-storage
+fi
+if [[ -f $file ]]
+then
+	printf $green"\nBackup file found in \e[1m${file}\n"$off
+	sleep 2s
+	printf $green"\nChecking file integrity...\n"$off
+	if tar -tf "$file" &> /dev/null;then
+		printf $green"\n\e[1mFile is good!\nProceeding...\n"$off
+		sleep 1s
+	else
+		printf $red"File is courrupted.\n"
+		printf "Aborting...\n"$off
+		exit
+	fi
+else
+	printf $red"\nNo backup found in \e[1m/sdcard/termux-backup/\n"$off
+	printf $red"\nAborting...\n"$off
+	exit
+fi
+
+printf $green"\nRestoring your data from \e[1m${file}\n${green}Note: after restore termux will close automatically. Open it again."$off
+
+cd /data/data/com.termux/files
+
+pv "$file" | tar -zxf - --recursive-unlink --preserve-permissions
+
+exit

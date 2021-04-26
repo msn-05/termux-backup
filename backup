@@ -1,6 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-bin=/data/data/com.termux/files/usr/bin
 file=/sdcard/termux-backup/termux-backup.tar.gz
 
 green='\e[32m'
