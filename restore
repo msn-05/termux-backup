@@ -37,7 +37,7 @@ else
 	exit
 fi
 
-printf $green"\nRestoring your data from \e[1m${file}\n${green}Note: after restore termux will close automatically. Open it again."$off
+printf $green"\nRestoring your data from \e[1m${file}\n${green}Note: After termux is restored restart the app.\n"$off
 
 cd /data/data/com.termux/files
 
