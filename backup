@@ -7,13 +7,6 @@ green='\e[32m'
 red='\e[31m'
 off='\e[0m'
 
-if ![[ -f bin/pv && -f bin/toilet ]]
-then
-	printf $green"Installing dependencies..."$off
-	pkg update && pkg upgrade -y
-	pkg install pv toilet
-fi
-
 clear
 
 toilet -f slant -F metal -t "T-Backup"

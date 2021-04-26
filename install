@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+bin=/data/data/com.termux/files/usr/bin
+
+green='\e[32m'
+off='\e[0m'
+
+if [[ -f $bin/pv && -f $bin/toilet ]]
+then
+	printf $green"Dependencies already installed\n"$off
+else
+	printf $green"Installing dependencies...\n"$off
+	pkg update && pkg upgrade -y
+	pkg install pv toilet
+fi
+sleep 2s
+printf $green"\nAdding backup and restore to bin...\n"$off
+cp backup $bin/
+cp restore $bin/
+sleep 2s
+
+printf $green"\nNow you can run backup and restore by just typing them"$off
