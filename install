@@ -5,13 +5,13 @@ bin=/data/data/com.termux/files/usr/bin
 green='\e[32m'
 off='\e[0m'
 
-if [[ -f $bin/pv && -f $bin/toilet ]]
+if [[ -f $bin/pv && -f $bin/toilet && -f $bin/figlet ]]
 then
 	printf $green"Dependencies already installed\n"$off
 else
 	printf $green"Installing dependencies...\n"$off
 	pkg update && pkg upgrade -y
-	pkg install pv toilet
+	pkg install pv toilet figlet
 fi
 sleep 1s
 printf $green"\nAdding backup and restore to PATH...\n"$off
