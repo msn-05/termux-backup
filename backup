@@ -45,4 +45,4 @@ cd /data/data/com.termux/files
 
 tar -zcf - home usr | pv -pte > "$file"
 
-printf "\nDone!\n"
+printf "\nDone\n"
