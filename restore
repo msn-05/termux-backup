@@ -24,11 +24,18 @@ then
 	sleep 2s
 	printf $green"\nChecking file integrity...\n"$off
 	if tar -tf "$file" &> /dev/null;then
-		printf $green"\n\e[1mFile is good!\nProceeding...\n"$off
-		sleep 1s
+		printf $green"\n\e[1mFile is good!\n"
+		read -p "Do you want to proceed?([y]/n):" choice
+		if [[ $choice == 'y' || $choice == '' ]]
+		then
+			printf "\nProceeding...\n"$off
+			sleep 1s
+		else
+			printf $red"\nAborting...\n"$off
+		fi
 	else
-		printf $red"File is courrupted.\n"
-		printf "Aborting...\n"$off
+		printf $red"\nFile is courrupted.\n"
+		printf "\nAborting...\n"$off
 		exit
 	fi
 else
@@ -41,4 +48,4 @@ cd /data/data/com.termux/files
 
 printf $green"\nRestoring your data from \e[1m${file}\n${green}Note: After termux is restored restart the app.\n${red}Warning: Do not I repeat do not exit while restoring.\n"$off
 
-pv "$file" | tar -zxf - -recursive-unlink --preserve-permissions
+pv "$file" | tar -zxf - --recursive-unlink --preserve-permissions
