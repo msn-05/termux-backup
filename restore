@@ -46,7 +46,7 @@ fi
 
 cd /data/data/com.termux/files
 
-printf $green"\nRestoring your data from \e[1m${file}\n${green}Note: After termux is restored restart the app.\n${red}Warning: Do not I repeat do not exit while restoring.\n"$off
+printf $green"\nRestoring your data from \e[1m${file}\n\n${green}Note: After termux is restored restart the app.\n\n${red}Warning: Do not I repeat do not exit while restoring.\n\n"$off
 
 trap '' 2
 
