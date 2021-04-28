@@ -7,10 +7,10 @@ off='\e[0m'
 
 if [[ -f $bin/pv && -f $bin/toilet && -f $bin/figlet ]]
 then
-	printf $green"Dependencies already installed\n"$off
+	printf $green"\nDependencies already installed\n"$off
 else
-	printf $green"Installing dependencies...\n"$off
-	pkg update && pkg upgrade -y
+	printf $green"\nInstalling dependencies...\n"$off
+	pkg update
 	pkg install pv toilet figlet
 fi
 sleep 1s
@@ -24,4 +24,4 @@ chmod +x $bin/restore
 
 sleep 1s
 
-printf $green"\nNow you can run backup and restore by just typing them\n"$off
+printf $green"\nNow you can run backup and restore by just typing them\n\n"$off
