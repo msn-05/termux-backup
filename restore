@@ -48,4 +48,8 @@ cd /data/data/com.termux/files
 
 printf $green"\nRestoring your data from \e[1m${file}\n${green}Note: After termux is restored restart the app.\n${red}Warning: Do not I repeat do not exit while restoring.\n"$off
 
+trap '' 2
+
 pv "$file" | tar -zxf - --recursive-unlink --preserve-permissions
+
+trap 2
