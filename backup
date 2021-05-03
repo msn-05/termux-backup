@@ -10,9 +10,9 @@ clear
 
 toilet -f slant -F metal -t "T-Backup"
 
-sleep 2s
+sleep 1s
 
-if [[ -d /sdcard/ ]]
+if [[ -d ~/storage ]]
 then
 	:
 else
@@ -20,7 +20,7 @@ else
 fi
 if [[ -f $file ]]
 then
-	printf $red"\nA backup already exists in \e[1m${file}\n"$off
+	printf $red"\nA backup already exists in \e[1m${file}\n\n"$off
 	read -p "Overwrite it?([y]/n):" choice
 	if [[ $choice == 'y' || $choice == '' ]]
 	then
